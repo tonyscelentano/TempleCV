@@ -19,6 +19,8 @@ A high-performance desktop application for forging your career record.
 
 </div>
 
+<img width="2560" height="1388" alt="{8630A91C-A027-4AF3-80CA-965847ADA17D}" src="https://github.com/user-attachments/assets/2131977b-4266-4fc2-8b80-ee3cab42c8ba" />
+
 ---
 
 ## 🏛️ The Philosophy
