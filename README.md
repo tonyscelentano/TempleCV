@@ -8,6 +8,8 @@
                /_/                           
 ```
 
+[Download Release]([url](https://github.com/tonyscelentano/TempleCV/releases))
+
 **Deterministic. Local-First. Sovereign.**  
 A high-performance desktop application for forging your career record.
 
