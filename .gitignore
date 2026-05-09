@@ -1,37 +1,66 @@
-# Node
+# Dependencies / package managers
 node_modules/
 .npm-cache/
 .npm-cache-install/
-.playwright-mcp/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+.yarn/
+.pnp.*
 
-# Build output
+# Build / package output
 out/
 dist/
 .vite/
 build/
+release/
+coverage/
+*.tsbuildinfo
+
+# Test / browser tooling output
+.playwright-mcp/
+playwright-report/
+test-results/
+.nyc_output/
 
 # IDEs and Editors
 .idea/
 .vscode/
+.vs/
+.cursor/
+.windsurf/
 *.swp
 *.swo
-.DS_Store
 
-# Agent / AI Configuration (User Policy)
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Agent / AI configuration and local policy
 .claude/
 .gemini/
+.agents/
+.codex/
 .roadmaps/
+AGENTS.md
+GEMINI.md
 
-# App-specific files
+# App-specific local files
 *.resume
 *.log
+*.tmp
+*.bak
+
+# Local reference/private materials
+TonyResume.html
+tony-resume-reference.png
+*-resume-reference.*
 
 # Environment variables
 .env
+.env.*
 .env.local
 .env.development.local
 .env.test.local
