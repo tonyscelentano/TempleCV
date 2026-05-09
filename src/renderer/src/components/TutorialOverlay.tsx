@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type Step = {
   targetId: string;
@@ -92,11 +93,12 @@ export function TutorialOverlay() {
   };
 
   const finishTutorial = () => {
+    setTargetRect(null);
     setIsVisible(false);
     localStorage.setItem("templecv_tutorial_disabled", "true");
   };
 
-  return (
+  return createPortal(
     <div className="tutorial-overlay">
       {targetRect && (
         <div 
@@ -111,23 +113,26 @@ export function TutorialOverlay() {
       )}
       
       <div 
+        aria-label="Product tour"
         className={`tutorial-card position-${step.position}`}
+        role="dialog"
         style={getCardStyle(step.position, targetRect)}
       >
         <h3>{step.title}</h3>
         <p>{step.description}</p>
         
         <div className="tutorial-actions">
-          <button className="btn-disable" onClick={finishTutorial}>Skip Tour</button>
-          <div className="tutorial-dots">
+          <button className="btn-disable" type="button" onClick={finishTutorial}>Skip Tour</button>
+          <div aria-hidden="true" className="tutorial-dots">
             {STEPS.map((_, i) => (
               <span key={i} className={i === currentStep ? "active" : ""} />
             ))}
           </div>
-          <button className="btn-next" onClick={handleNext}>{isLast ? "Done" : "Next"}</button>
+          <button className="btn-next" type="button" onClick={handleNext}>{isLast ? "Done" : "Next"}</button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
