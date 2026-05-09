@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { useMemo, useRef, useState, useEffect } from "react";
 import { SectionCommandGrid, type SectionCommand } from "./components/SectionCommandGrid";
+import { TutorialOverlay } from "./components/TutorialOverlay";
 import { useResumeWorkspace } from "./hooks/useResumeWorkspace";
 import { AssetsSection } from "./sections/AssetsSection";
 import { BasicsSection } from "./sections/BasicsSection";
@@ -101,14 +102,16 @@ function App() {
   }, []);
 
   return (
-    <main className="app-shell">
-      <aside className="sidebar">
-        <div className="brand">
-          <div>
-            <h1>TempleCV</h1>
-            <p>{resumeDoc.title}</p>
+    <>
+      <TutorialOverlay />
+      <main className="app-shell">
+        <aside id="tour-sidebar" className="sidebar">
+          <div className="brand">
+            <div>
+              <h1>TempleCV</h1>
+              <p>{resumeDoc.title}</p>
+            </div>
           </div>
-        </div>
 
         <SectionCommandGrid activeSection={activeSection} commands={sectionCommands} onSelect={setActiveSection} />
 
@@ -157,21 +160,21 @@ function App() {
         <p className="status">{workspace.status}</p>
       </aside>
 
-      <section className="preview-pane">
+      <section id="tour-preview" className="preview-pane">
         <div className="preview-wrapper" data-page-size={resumeDoc.design.layout.pageSize}>
           <iframe ref={iframeRef} title="Resume preview" />
         </div>
       </section>
 
       <aside className="right-sidebar">
-        <div className="brand">
+        <div id="tour-design" className="brand">
           <div>
             <h2>Design & Export</h2>
             <p>Customize presentation</p>
           </div>
         </div>
         
-        <div className="toolbar">
+        <div id="tour-toolbar" className="toolbar">
           <button type="button" onClick={workspace.openPackage}>
             Open
           </button>
@@ -198,6 +201,7 @@ function App() {
         <BrandSection document={resumeDoc} updateDesign={workspace.updateDesign} />
       </aside>
     </main>
+    </>
   );
 }
 
